@@ -2,17 +2,7 @@
   "expo": {
     "name": "tgb-app",
     "slug": "tgb-app",
-    "scheme": "tgb-app",
-    "plugins": [
-      [
-        "expo-contacts",
-        {
-          "contactsPermission": "Allow tgb-app to access your contacts."
-        }
-      ],
-      "@react-native-firebase/app",
-      "@react-native-firebase/auth"
-    ],
+    "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
