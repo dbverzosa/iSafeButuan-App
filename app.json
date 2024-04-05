@@ -2,6 +2,17 @@
   "expo": {
     "name": "tgb-app",
     "slug": "tgb-app",
+    "scheme": "tgb-app",
+    "plugins": [
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Allow tgb-app to access your contacts."
+        }
+      ],
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,13 +29,20 @@
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.dbverzosa.tgbapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0426b5bc-8fe1-4d85-8c6d-387626a9fa72"
+      }
     }
   }
 }
