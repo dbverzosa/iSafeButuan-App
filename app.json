@@ -2,7 +2,29 @@
   "expo": {
     "name": "tgb-app",
     "slug": "tgb-app",
-    "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth"],
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "isAndroidForegroundServiceEnabled": {
+            "message": "Allow $(PRODUCT_NAME) to access your location even when you are not using the app.",
+            "foregroundService": {
+              "notificationTitle": "$(PRODUCT_NAME) Location Service",
+              "notificationBody": "Your location is being tracked to provide you with relevant information."
+            }
+          },
+          "isAndroidBackgroundLocationEnabled": true
+        }
+      ],
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Allow $(PRODUCT_NAME) to access your contacts."
+        }
+      ],
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

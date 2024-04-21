@@ -1,15 +1,112 @@
+// import React, { useState } from 'react';
+// import { View, Text, TouchableOpacity, StyleSheet, Modal } from 'react-native';
+// import { useNavigation } from '@react-navigation/native'; // Import useNavigation
+// import ReportingForm from './ReportingForm';
+// import EmergencyContacts from './EmergencyContacts';
+// import Hotlines from './Hotlines';
+
+
+// const Home = () => {
+//   const [modalVisible, setModalVisible] = useState(false);
+//   const [emergencyModalVisible, setEmergencyModalVisible] = useState(false);
+//   const [hotlinesModalVisible, setHotlinesModalVisible] = useState(false);
+//   const navigation = useNavigation(); // Get the navigation object
+
+//   const handleLogin = () => {
+//     navigation.navigate('Login');
+//   };
+
+//   return (
+//     <View style={styles.container}>
+//       <Text style={styles.heading}>Welcome to iSafeButuan App</Text>
+//       <TouchableOpacity onPress={() => setHotlinesModalVisible(true)} style={styles.button}>
+//         <Text style={styles.buttonText}>Emergency Hotlines</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity onPress={() => setEmergencyModalVisible(true)} style={styles.button}>
+//         <Text style={styles.buttonText}>Police Contacts</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity style={styles.button} onPress={handleLogin}>
+//         <Text style={styles.buttonText}>Login</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.button}>
+//         <Text style={styles.buttonText}>Submit Anonymous Report</Text>
+//       </TouchableOpacity>
+//       <Modal
+//         animationType="slide"
+//         transparent={true}
+//         visible={hotlinesModalVisible}
+//         onRequestClose={() => setHotlinesModalVisible(false)}
+//       >
+      
+//         <Hotlines onClose={() => setHotlinesModalVisible(false)} />
+//       </Modal>
+//       <Modal
+//         animationType="slide"
+//         transparent={true}
+//         visible={emergencyModalVisible}
+//         onRequestClose={() => setEmergencyModalVisible(false)}
+//       >
+       
+//         <EmergencyContacts onClose={() => setEmergencyModalVisible(false)} />
+//       </Modal>
+
+
+//       <Modal
+//         animationType="slide"
+//         transparent={true}
+//         visible={modalVisible}
+//         onRequestClose={() => setModalVisible(false)}
+//       >
+//         <ReportingForm isVisible={modalVisible} onClose={() => setModalVisible(false)} />
+//       </Modal>
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: '#BEBDB8',
+//   },
+//   heading: {
+//     fontSize: 32,
+//     fontWeight: 'bold',
+//     marginBottom: 40,
+//     marginTop: 50,
+//   },
+//   button: {
+//     backgroundColor: '#841584',
+//     padding: 10,
+//     borderRadius: 5,
+//     marginBottom: 20,
+//     alignItems: 'center',
+//   },
+//   buttonText: {
+//     color: 'white',
+//     fontSize: 22,
+//     fontWeight: 'bold',
+//   },
+// });
+
+// export default Home;
+
+
+
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Modal } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Modal, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 import ReportingForm from './ReportingForm';
 import EmergencyContacts from './EmergencyContacts';
 import Hotlines from './Hotlines';
-
+import NearPoliceStation from './NearPoliceStation'; // Import NearPoliceStation component
 
 const Home = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [emergencyModalVisible, setEmergencyModalVisible] = useState(false);
   const [hotlinesModalVisible, setHotlinesModalVisible] = useState(false);
+  const [NearPoliceStationModalVisible, setNearPoliceStationModalVisible] = useState(false); // State for NearPoliceStation modal
   const navigation = useNavigation(); // Get the navigation object
 
   const handleLogin = () => {
@@ -29,15 +126,29 @@ const Home = () => {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.button}>
-        <Text style={styles.buttonText}>Submit Anonymous Report</Text>
+        <Text style={styles.buttonText}>Anonymous Tip Report</Text>
       </TouchableOpacity>
+      {/* Button to display NearPoliceStation content */}
+      <TouchableOpacity onPress={() => setNearPoliceStationModalVisible(true)} style={styles.button}>
+        <Text style={styles.buttonText}>Find Nearest Police Station</Text>
+      </TouchableOpacity>
+
+      {/* Modal to display NearPoliceStation content */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={NearPoliceStationModalVisible}
+        onRequestClose={() => setNearPoliceStationModalVisible(false)}
+      >
+        <NearPoliceStation onClose={() => setNearPoliceStationModalVisible(false)} />
+      </Modal>
+
       <Modal
         animationType="slide"
         transparent={true}
         visible={hotlinesModalVisible}
         onRequestClose={() => setHotlinesModalVisible(false)}
       >
-      
         <Hotlines onClose={() => setHotlinesModalVisible(false)} />
       </Modal>
       <Modal
@@ -46,11 +157,8 @@ const Home = () => {
         visible={emergencyModalVisible}
         onRequestClose={() => setEmergencyModalVisible(false)}
       >
-       
         <EmergencyContacts onClose={() => setEmergencyModalVisible(false)} />
       </Modal>
-
-
       <Modal
         animationType="slide"
         transparent={true}
@@ -62,7 +170,6 @@ const Home = () => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -77,11 +184,13 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   button: {
-    backgroundColor: '#841584',
+    backgroundColor: "#1565c0",
     padding: 10,
     borderRadius: 5,
     marginBottom: 20,
     alignItems: 'center',
+    width: '80%', 
+    maxWidth: 300, 
   },
   buttonText: {
     color: 'white',
@@ -90,7 +199,9 @@ const styles = StyleSheet.create({
   },
 });
 
+
 export default Home;
+
 
 // //-------------orig home--------
 
@@ -116,7 +227,7 @@ export default Home;
 //     navigation.navigate('Login');
 //   };
 
-//   const handleFindNearestPoliceStation = () => {
+//   const handleFindNearestNearPoliceStation = () => {
 //     setShowMap(true); // Show the map when the button is clicked
 //   };
 
@@ -135,7 +246,7 @@ export default Home;
 //       <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.button}>
 //         <Text style={styles.buttonText}>Submit Anonymous Report</Text>
 //       </TouchableOpacity>
-//       <TouchableOpacity onPress={handleFindNearestPoliceStation} style={styles.button}>
+//       <TouchableOpacity onPress={handleFindNearestNearPoliceStation} style={styles.button}>
 //         <Text style={styles.buttonText}>Find Nearest Police Station</Text>
 //       </TouchableOpacity>
 //       {showMap && <Maps />} 

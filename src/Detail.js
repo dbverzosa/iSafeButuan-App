@@ -5,7 +5,7 @@ import firestore from "@react-native-firebase/firestore";
 
 export default function Detail ({route, navigation}){
     const { uid } = route.params;
-    const [name, setName] = useState("Concerned Citizen");
+    const [name, setName] = useState("");
     const [contact, setContact] = useState("");
     const [location, setLocation] = useState("");
     const [incidentDetails, setIncidentDetails] = useState("");
